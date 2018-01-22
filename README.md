@@ -268,7 +268,7 @@ q)dpy 2 1 0#0
 ''J'
 ```
 
-On Windows, these would look as follows:
+On Windows, this would look as follows:
 
 ```
 q)dpy 0#0i
@@ -290,7 +290,7 @@ The following functions can be used to control the displayed output:
 
 | Name and Syntax | Description |
 | --------------- | ----------- |
-| `.dpy.setc n` | Sets the corner and side box drawing characters. Use `0` for ASCII characters, `1` for Windows graphic characters, and `2` for post-processing via `.dpy.trt`. The default is `1` under Windows and `0` otherwise |
+| `.dpy.setc n` | Sets the corner and side box drawing characters. Use `0` for ASCII characters, `1` for Windows graphic characters, and `2` for post-processing via `.dpy.trt` (see the section entitled "Custom Output Translation" for additional information). The default is `1` under Windows and `0` otherwise |
 | `.dpy.trt x` | Defines arbitrary character translations to be applied to the output prior to display. This can, for example, be used to illustrate object nesting through colo[u]r; see below for details |
 
 dpy can be wired into the `d` namespace by adding the following lines to your `q.q` file:
@@ -323,6 +323,8 @@ characters can be displayed in a specific colour.
 \d .dpy
 
 setc 2 / Enable character post-processing mode
+
+PC:.dpy`tl`tr`bl`br`vl`vr`ht`hb / Placeholder output characters configured in <.dpy.setc>
 
 
 //
@@ -370,8 +372,8 @@ bces:{[bc;s] "\033[",bc,"m",s,"\033[0m"} / Bash colour escape sequence
 //			graphic characters.
 //
 rbdc:{[s;bdc]
-    j:where b|-1_1b,b:s in m:"\332\277\300\331\263\272\304\315";
-    t:j _ s;t[where b@j]:bdc[m?s where b];(,/)t
+    j:where b|-1_1b,b:s in PC;
+    t:j _ s;t[where b@j]:bdc[PC?s where b];(,/)t
     }
 
 
@@ -398,7 +400,7 @@ As a variant, the next example shows how the box drawing characters can be augme
 setc 2 / Enable character post-processing mode
 
 NC:("0;34";"0;36";"0;37";"0;31";"1;33";"1;32") / Change to suit preferences
-PC:.dpy`tl`tr`bl`br`vl`vr`ht`hb / Placeholder characters configured in <.dpy.setc>
+PC:.dpy`tl`tr`bl`br`vl`vr`ht`hb / Placeholder output characters configured in <.dpy.setc>
 EB:"\154\153\155\152\170\170\161\161" / Escaped box drawing characters
 
 
