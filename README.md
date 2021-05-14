@@ -438,4 +438,4 @@ Thanks to Hugh Hyndman and Fadel Al-Jaifi of First Derivatives for the Bash outp
 
 # Author
 
-Leslie Goldsmith, First Derivatives
+Leslie Goldsmith
