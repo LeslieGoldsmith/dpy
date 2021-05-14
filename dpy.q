@@ -1,6 +1,6 @@
 /
 	General object display with type and structure
-	Copyright (c) 2016-2018 First Derivatives
+	Copyright (c) 2016-2018 Leslie Goldsmith
 
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@
 	
 		d)2 3 4#til 24
 
-	Author:		Leslie Goldsmith, First Derivatives
+	Author:		Leslie Goldsmith
 \
 
 
@@ -62,7 +62,7 @@ fmt:{
 	$[0h>t:type x;(1#" ";trm[(-)t].Q.s1 x;1#ty t); / Simple scalar
 		((0h<t)&78h>t)|99h<t;box[ty t;-1 0<l;enl$[l:count x;trm[t].Q.s1 x;" "]]; / Simple vector or function
 		0~u:ts x;box["#";1 1;pad raze fmt each x]; / Not simple
-		t in 98 99h;box[ty t;1 1;pad .Q.s2 x]; / Table or dictionary
+		t in 98 99h;box[ty 99h-.Q.qt x;1 1;pad .Q.s2 x]; / Table or dictionary
 		(2<count u)&1=u 1;box["#";1 1;fmt first x]; / Simple enclosure
 		3=count u;box[ty first u;0<1_u;pad trm[first u]each .Q.s2 x]; / Simple matrix
 		box[ty first u;0<1_u;pad trm[first u]each mat[1_u;x]]] / Simple multi-dimensional array
