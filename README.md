@@ -288,9 +288,9 @@ q)dpy 2 1 0#0
 
 The following functions can be used to control the displayed output:
 
-| Name and Syntax | Description |
+| Name&nbsp;and&nbsp;Syntax | Description |
 | --------------- | ----------- |
-| `.dpy.setc n` | Sets the corner and side box drawing characters. Use `0` for ASCII characters, `1` for Windows graphic characters, and `2` for post-processing via `.dpy.trt` (see the section entitled "Custom Output Translation" for additional information). The default is `1` under Windows and `0` otherwise |
+| `.dpy.setc n` | Sets the corner and side box drawing characters. Use `0` for ASCII characters, `1` for Windows graphic characters, and `2` for post-processing via `.dpy.trt` (see [Custom Output Translation](#custom-output-translation) for additional information). The default is `1` under Windows and `0` otherwise |
 | `.dpy.trt x` | Defines arbitrary character translations to be applied to the output prior to display. This can, for example, be used to illustrate object nesting through colo[u]r; see below for details |
 
 dpy can be wired into the `d` namespace by adding the following lines to your `q.q` file:
